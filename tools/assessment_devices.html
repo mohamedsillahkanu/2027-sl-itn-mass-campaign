@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Device Assessment Certification - ITN Mass Campaign 2027</title>
+<title>Device Assessment - ITN Mass Campaign 2027</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
@@ -26,11 +26,10 @@ body {
   margin: 0 auto;
 }
 
-/* Assessment Card Styles */
 .assessment-card {
   background: white;
   border-radius: 16px;
-  border: 2px solid #004080;
+  border: 1px solid #004080;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,64,128,0.15);
 }
@@ -49,7 +48,7 @@ body {
 }
 
 .card-header p {
-  color: rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.8);
   font-size: 0.7rem;
   margin-top: 5px;
 }
@@ -68,7 +67,7 @@ body {
 
 .info-box {
   background: #f0f4f8;
-  border: 2px solid #004080;
+  border: 1px solid #004080;
   border-radius: 10px;
   padding: 12px;
   text-align: center;
@@ -94,7 +93,7 @@ body {
 
 .label {
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #004080;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -106,7 +105,7 @@ body {
   width: 100%;
   padding: 12px 14px;
   background: white;
-  border: 2px solid #004080;
+  border: 2px solid #dce3ec;
   border-radius: 8px;
   color: #000000;
   font-family: 'Oswald', sans-serif;
@@ -116,7 +115,7 @@ body {
 
 .input:focus {
   outline: none;
-  border-color: #ffc107;
+  border-color: #004080;
 }
 
 .btn {
@@ -141,89 +140,29 @@ body {
 
 .attempts-left {
   background: #f0f8ff;
-  border-left: 4px solid #ffc107;
+  border-left: 3px solid #ffc107;
   padding: 10px 12px;
   border-radius: 6px;
   margin-top: 15px;
   font-size: 0.8rem;
   color: #000000;
-  font-weight: 600;
 }
 
-/* Signature Upload Section */
-.signature-section {
-  margin-top: 20px;
-  padding: 15px;
-  background: #f0f4f8;
-  border: 2px solid #004080;
-  border-radius: 10px;
-}
-
-.signature-title {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #004080;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-.signature-row {
-  display: flex;
-  gap: 15px;
-  justify-content: space-between;
-}
-
-.signature-upload {
-  flex: 1;
-  text-align: center;
-  padding: 10px;
-  background: white;
-  border: 1px solid #004080;
-  border-radius: 8px;
-}
-
-.signature-upload label {
-  display: block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: #004080;
-  margin-bottom: 5px;
-  cursor: pointer;
-}
-
-.signature-upload input {
-  display: none;
-}
-
-.signature-preview {
-  margin-top: 8px;
-  font-size: 0.7rem;
-  color: #000000;
-}
-
-.signature-preview img {
-  max-height: 40px;
-  max-width: 120px;
-  border: 1px solid #004080;
-  padding: 2px;
-}
-
-/* Quiz Styles */
 .quiz-header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
   padding-bottom: 15px;
-  border-bottom: 2px solid #004080;
+  border-bottom: 1px solid #e0e7ee;
+  color: #000000;
 }
 
 .progress-bar {
-  height: 8px;
+  height: 6px;
   background: #e0e7ee;
-  border-radius: 4px;
+  border-radius: 3px;
   overflow: hidden;
   margin-bottom: 20px;
-  border: 1px solid #004080;
 }
 
 .progress-fill {
@@ -254,44 +193,43 @@ body {
   gap: 12px;
   padding: 12px 15px;
   background: white;
-  border: 2px solid #004080;
+  border: 2px solid #e0e7ee;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .option:hover {
-  border-color: #ffc107;
+  border-color: #004080;
   background: #f5f9ff;
 }
 
 .option.selected {
-  border-color: #ffc107;
+  border-color: #004080;
   background: #e8f1fb;
 }
 
 .option-letter {
   width: 28px;
   height: 28px;
-  background: #004080;
+  background: #f0f4f8;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  color: white;
+  color: #004080;
 }
 
 .option.selected .option-letter {
-  background: #ffc107;
-  color: #004080;
+  background: #004080;
+  color: white;
 }
 
 .option-text {
   flex: 1;
   font-size: 0.9rem;
   color: #000000;
-  font-weight: 500;
 }
 
 .quiz-nav {
@@ -307,7 +245,7 @@ body {
   border-radius: 8px;
   color: #004080;
   font-family: 'Oswald', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -321,7 +259,6 @@ body {
   background: #0056b3;
 }
 
-/* Result Styles */
 .result-banner {
   text-align: center;
   padding: 30px;
@@ -348,21 +285,17 @@ body {
   color: white;
   margin-top: 10px;
   font-size: 1rem;
-  font-weight: 600;
 }
 
 .retake-info {
   background: #f0f4f8;
-  border: 2px solid #004080;
   border-radius: 10px;
   padding: 15px;
   text-align: center;
   margin-top: 20px;
   color: #000000;
-  font-weight: 600;
 }
 
-/* Certificate Modal */
 .modal {
   display: none;
   position: fixed;
@@ -370,7 +303,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.85);
   z-index: 1000;
   align-items: center;
   justify-content: center;
@@ -406,24 +339,16 @@ body {
 }
 
 .modal-actions button.close {
-  background: #c0392b;
+  background: #607080;
 }
 
 .hidden {
   display: none;
 }
-
-.signature-status {
-  font-size: 0.7rem;
-  margin-top: 5px;
-  color: #28a745;
-  font-weight: 600;
-}
 </style>
 </head>
 <body>
 <div class="container">
-  <!-- ASSESSMENT SCREEN -->
   <div id="assessmentScreen" class="assessment-card">
     <div class="card-header">
       <h1>DEVICE ASSESSMENT CERTIFICATION</h1>
@@ -435,36 +360,16 @@ body {
         <div class="info-box"><div class="info-val">10/10</div><div class="info-lbl">Pass Mark</div></div>
         <div class="info-box"><div class="info-val">3</div><div class="info-lbl">Attempts</div></div>
       </div>
-      
       <div class="field">
         <label class="label">FULL NAME</label>
         <input type="text" id="userName" class="input" placeholder="Enter your full name">
       </div>
-      
-      <!-- Signature Upload Section -->
-      <div class="signature-section">
-        <div class="signature-title">OFFICIAL SIGNATURES (Upload before generating certificate)</div>
-        <div class="signature-row">
-          <div class="signature-upload">
-            <label for="ceoSignature">📝 CEO Signature (Mohamed Sillah Kanu)</label>
-            <input type="file" id="ceoSignature" accept="image/*" onchange="uploadCEOSignature(this)">
-            <div id="ceoPreview" class="signature-preview"></div>
-          </div>
-          <div class="signature-upload">
-            <label for="clSignature">📝 Country Lead Signature (Randwulf A.J. Tucker)</label>
-            <input type="file" id="clSignature" accept="image/*" onchange="uploadCountryLeadSignature(this)">
-            <div id="clPreview" class="signature-preview"></div>
-          </div>
-        </div>
-      </div>
-      
       <div id="attemptsInfo" class="attempts-left"></div>
-      <div id="errorMsg" style="color:#c0392b; font-size:0.8rem; text-align:center; margin-top:10px; display:none; font-weight:600;"></div>
+      <div id="errorMsg" style="color:#c0392b; font-size:0.8rem; text-align:center; margin-top:10px; display:none;"></div>
       <button class="btn" onclick="startAssessment()">START ASSESSMENT</button>
     </div>
   </div>
 
-  <!-- QUIZ SCREEN -->
   <div id="quizScreen" class="assessment-card" style="display:none;">
     <div class="card-header">
       <h1>DEVICE ASSESSMENT QUIZ</h1>
@@ -472,8 +377,8 @@ body {
     </div>
     <div class="card-body">
       <div class="quiz-header">
-        <span id="questionCounter" style="font-weight:700; color:#004080;">Question 1/10</span>
-        <span id="answeredCount" style="font-weight:700; color:#004080;">0 answered</span>
+        <span id="questionCounter">Question 1/10</span>
+        <span id="answeredCount">0 answered</span>
       </div>
       <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
       <div id="questionText" class="question-text"></div>
@@ -486,7 +391,6 @@ body {
     </div>
   </div>
 
-  <!-- RESULT SCREEN -->
   <div id="resultScreen" class="assessment-card" style="display:none;">
     <div class="card-body">
       <div id="resultBanner" class="result-banner">
@@ -508,7 +412,6 @@ body {
   </div>
 </div>
 
-<!-- CERTIFICATE MODAL -->
 <div id="certificateModal" class="modal">
   <div class="modal-content">
     <div id="certificateHTML"></div>
@@ -520,9 +423,6 @@ body {
 </div>
 
 <script>
-// ============================================================
-// QUESTIONS based on Device Assessment TOR
-// ============================================================
 const MASTER_QUESTIONS = [
   { text: "How many mobile devices need to be assessed for the 2027 ITN Mass Campaign?", options: ["5,000 devices", "8,000 devices", "7,000 devices", "10,000 devices"], correct: 2 },
   { text: "What is the total duration of the device assessment exercise?", options: ["5 working days", "7 working days", "10 working days", "14 working days"], correct: 2 },
@@ -538,6 +438,7 @@ const MASTER_QUESTIONS = [
 
 const STORAGE_KEY = 'device_assessment_data';
 const ICF_LOGO = "https://github.com/mohamedsillahkanu/gdp-dashboard-2/raw/6c7463b0d5c3be150aafae695a4bcbbd8aeb1499/ICF-SL.jpg";
+const VERIFICATION_BASE = "https://icf-sl.verification/device-certificate?certId=";
 
 let ceoSignature = null;
 let countryLeadSignature = null;
@@ -549,33 +450,8 @@ let userAnswers = [];
 let currentQIndex = 0;
 let lastScore = 0;
 let hasPassed = false;
+let currentCertificateId = "";
 
-// Signature upload handlers
-function uploadCEOSignature(input) {
-  const file = input.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      ceoSignature = e.target.result;
-      document.getElementById('ceoPreview').innerHTML = `<img src="${ceoSignature}" alt="CEO Signature"><div class="signature-status">✓ Signature loaded</div>`;
-    };
-    reader.readAsDataURL(file);
-  }
-}
-
-function uploadCountryLeadSignature(input) {
-  const file = input.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      countryLeadSignature = e.target.result;
-      document.getElementById('clPreview').innerHTML = `<img src="${countryLeadSignature}" alt="Country Lead Signature"><div class="signature-status">✓ Signature loaded</div>`;
-    };
-    reader.readAsDataURL(file);
-  }
-}
-
-// Helper functions
 function shuffleArray(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -623,25 +499,20 @@ function saveUserData() {
 
 function startAssessment() {
   const name = document.getElementById('userName').value.trim();
-  
   if (!name) {
     showError('Please enter your full name');
     return;
   }
-  
   currentUser = { name };
   const userData = loadUserData();
-  
   if (userData.passed) {
     showError('You have already passed this certification! Certificate is available.');
     return;
   }
-  
   if (userData.attempts >= maxAttempts) {
     showError('You have used all 3 attempts. No further retakes allowed.');
     return;
   }
-  
   currentAttempt = userData.attempts;
   hasPassed = false;
   currentQuestions = getShuffledQuestions();
@@ -651,7 +522,6 @@ function startAssessment() {
   document.getElementById('assessmentScreen').style.display = 'none';
   document.getElementById('quizScreen').style.display = 'block';
   document.getElementById('resultScreen').style.display = 'none';
-  
   renderQuestion();
 }
 
@@ -665,16 +535,12 @@ function renderQuestion() {
   
   const optionsContainer = document.getElementById('optionsContainer');
   optionsContainer.innerHTML = '';
-  
   q.options.forEach((opt, idx) => {
     const isSelected = userAnswers[currentQIndex] === idx;
     const letter = String.fromCharCode(65 + idx);
     const optionDiv = document.createElement('div');
     optionDiv.className = `option ${isSelected ? 'selected' : ''}`;
-    optionDiv.innerHTML = `
-      <div class="option-letter">${letter}</div>
-      <div class="option-text">${opt}</div>
-    `;
+    optionDiv.innerHTML = `<div class="option-letter">${letter}</div><div class="option-text">${opt}</div>`;
     optionDiv.onclick = () => selectOption(idx);
     optionsContainer.appendChild(optionDiv);
   });
@@ -712,17 +578,14 @@ function submitQuiz() {
     alert('Please select an answer before submitting.');
     return;
   }
-  
   let correctCount = 0;
   for (let i = 0; i < 10; i++) {
     if (userAnswers[i] !== null && userAnswers[i] === currentQuestions[i].correct) {
       correctCount++;
     }
   }
-  
   lastScore = correctCount;
   const passed = correctCount === 10;
-  
   if (passed) {
     hasPassed = true;
     saveUserData();
@@ -733,7 +596,6 @@ function submitQuiz() {
   
   document.getElementById('quizScreen').style.display = 'none';
   document.getElementById('resultScreen').style.display = 'block';
-  
   document.getElementById('scoreDisplay').textContent = `${correctCount}/10`;
   const resultBanner = document.getElementById('resultBanner');
   const resultMessage = document.getElementById('resultMessage');
@@ -765,11 +627,9 @@ function retakeQuiz() {
     alert('You have no remaining attempts.');
     return;
   }
-  
   currentQuestions = getShuffledQuestions();
   userAnswers = new Array(10).fill(null);
   currentQIndex = 0;
-  
   document.getElementById('resultScreen').style.display = 'none';
   document.getElementById('quizScreen').style.display = 'block';
   renderQuestion();
@@ -793,7 +653,7 @@ function updateAttemptsDisplay() {
           document.getElementById('attemptsInfo').innerHTML = '✓ Already certified! Certificate available.';
           return;
         }
-        document.getElementById('attemptsInfo').innerHTML = `Attempts used: ${data.attempts || 0}/${maxAttempts} | Remaining: ${maxAttempts - (data.attempts || 0)}`;
+        document.getElementById('attemptsInfo').innerHTML = `Attempts used: ${data.attempts || 0}/${maxAttempts}`;
         return;
       }
     }
@@ -808,127 +668,112 @@ function showError(msg) {
   setTimeout(() => { errorEl.style.display = 'none'; }, 3000);
 }
 
-// ============================================================
-// CERTIFICATE with QR Code
-// ============================================================
-function generateQRCodeDataURL(name, score, certId) {
-  const qrData = JSON.stringify({
-    name: name,
-    score: score + "/10",
-    certificate_id: certId,
-    date: new Date().toISOString().split('T')[0],
-    program: "Device Assessment Certification 2027",
-    organization: "ICF-SL"
-  });
-  
-  // Create canvas and generate QR code
-  const canvas = document.createElement('canvas');
-  QRCode.toCanvas(canvas, qrData, { width: 80, margin: 1 }, function(error) {
-    if (error) console.error(error);
-  });
-  return canvas.toDataURL();
+function getSignatureImage(signatureData, name, title) {
+  if (signatureData) {
+    return `<img src="${signatureData}" style="max-height: 50px; max-width: 160px; object-fit: contain;">`;
+  }
+  return `<div style="width: 160px; height: 2px; background: #004080; margin: 0 auto;"></div>
+          <div style="font-family: 'Cinzel', serif; font-size: 10px; font-weight: 700; color: #000000; margin-top: 8px;">${name}</div>
+          <div style="font-size: 9px; color: #000000;">${title}</div>`;
 }
 
 function generateCertificateHTML() {
   const currentDate = new Date();
   const formattedDate = `${currentDate.getDate()} ${currentDate.toLocaleString('default', { month: 'long' })} ${currentDate.getFullYear()}`;
-  const certId = `ICF-DA-${Date.now().toString(36).toUpperCase()}`;
-  
-  // Generate QR Code
-  const qrCanvas = document.createElement('canvas');
-  const qrData = JSON.stringify({
-    name: currentUser.name,
-    score: lastScore + "/10",
-    certificate_id: certId,
-    date: formattedDate,
-    program: "Device Assessment Certification",
-    organization: "ICF-SL"
-  });
-  QRCode.toCanvas(qrCanvas, qrData, { width: 90, margin: 1 }, function(error) {});
-  const qrCodeURL = qrCanvas.toDataURL();
+  currentCertificateId = `ICF-DA-${Date.now().toString(36).toUpperCase()}`;
   
   const ceoSignatureHtml = ceoSignature 
-    ? `<img src="${ceoSignature}" style="max-height: 50px; max-width: 180px; object-fit: contain;">`
-    : `<div style="width: 180px; height: 2px; background: #004080; margin: 0 auto;"></div>`;
+    ? `<img src="${ceoSignature}" style="max-height: 45px; max-width: 160px; object-fit: contain;">`
+    : `<div style="width: 160px; height: 2px; background: #004080; margin: 0 auto;"></div>`;
     
   const clSignatureHtml = countryLeadSignature 
-    ? `<img src="${countryLeadSignature}" style="max-height: 50px; max-width: 180px; object-fit: contain;">`
-    : `<div style="width: 180px; height: 2px; background: #004080; margin: 0 auto;"></div>`;
-  
+    ? `<img src="${countryLeadSignature}" style="max-height: 45px; max-width: 160px; object-fit: contain;">`
+    : `<div style="width: 160px; height: 2px; background: #004080; margin: 0 auto;"></div>`;
+
   return `
-    <div style="width: 900px; margin: 0 auto; background: white; border: 20px double #004080; padding: 35px 30px; font-family: 'Cormorant Garamond', serif; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
-      
-      <!-- ICF-SL Logo Header -->
-      <div style="text-align: center; margin-bottom: 15px;">
-        <img src="${ICF_LOGO}" alt="ICF-SL" style="height: 70px; margin-bottom: 8px;">
-        <div style="font-family: 'Cinzel', serif; font-size: 12px; font-weight: 700; color: #004080; letter-spacing: 2px;">INFORMATICS CONSULTANCY FIRM SIERRA LEONE</div>
-        <div style="font-family: 'Cinzel', serif; font-size: 9px; color: #000000; letter-spacing: 1px; font-weight: 500;">Health Informatics & Data Consultancy · Freetown, Sierra Leone</div>
+    <div id="certificateOuter" style="width: 820px; margin: 0 auto; background: white; border: 15px double #004080; padding: 30px 25px; font-family: 'Cormorant Garamond', serif; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+      <div style="text-align: center; margin-bottom: 12px;">
+        <img src="${ICF_LOGO}" alt="ICF-SL" style="height: 70px; margin-bottom: 6px; display: inline-block;">
+        <div style="font-family: 'Cinzel', serif; font-size: 12px; font-weight: 700; color: #000000; letter-spacing: 2px;">INFORMATICS CONSULTANCY FIRM SIERRA LEONE</div>
+        <div style="font-family: 'Cinzel', serif; font-size: 9px; color: #000000; letter-spacing: 1px;">Health Informatics & Data Consultancy · Freetown, Sierra Leone</div>
       </div>
       
-      <!-- Gold Decorative Line -->
-      <div style="height: 3px; background: linear-gradient(90deg, transparent, #ffc107, #004080, #ffc107, transparent); margin: 15px 0;"></div>
+      <div style="height: 2px; background: linear-gradient(90deg, transparent, #ffc107, #004080, #ffc107, transparent); margin: 10px 0;"></div>
       
-      <!-- Title Section -->
-      <div style="text-align: center; margin: 10px 0;">
-        <div style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 5px; color: #000000; font-weight: 600;">THIS IS TO CERTIFY THAT</div>
-        <div style="font-family: 'Cinzel Decorative', serif; font-size: 28px; font-weight: 700; color: #004080; margin: 10px 0;">CERTIFICATE OF COMPLETION</div>
+      <div style="text-align: center; margin: 5px 0;">
+        <div style="font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 4px; color: #000000;">THIS IS TO CERTIFY THAT</div>
+        <div style="font-family: 'Cinzel Decorative', serif; font-size: 26px; font-weight: 700; color: #004080; margin: 8px 0;">CERTIFICATE OF COMPLETION</div>
       </div>
       
-      <!-- Gold Decorative Line -->
-      <div style="height: 3px; background: linear-gradient(90deg, transparent, #ffc107, #004080, #ffc107, transparent); margin: 15px 0;"></div>
+      <div style="height: 2px; background: linear-gradient(90deg, transparent, #ffc107, #004080, #ffc107, transparent); margin: 10px 0;"></div>
       
-      <!-- Body -->
       <div style="text-align: center;">
-        <p style="font-size: 14px; font-style: italic; color: #000000; margin: 10px 0; font-weight: 500;">is hereby awarded to</p>
-        <div style="font-family: 'Cinzel', serif; font-size: 32px; font-weight: 700; color: #004080; margin: 10px 0; text-transform: uppercase; border-bottom: 3px dotted #ffc107; display: inline-block; padding-bottom: 8px;">${currentUser.name.toUpperCase()}</div>
-        <p style="font-size: 14px; margin: 18px 0 10px 0; color: #000000; font-weight: 500;">for successfully completing the</p>
-        <p style="font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700; color: #004080;">DEVICE ASSESSMENT CERTIFICATION</p>
-        <p style="font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; color: #28a745; margin: 10px 0;">WITH 100% PASSING SCORE</p>
-        <p style="font-size: 12px; margin-top: 8px; color: #000000; font-weight: 500;">Score: ${lastScore}/10 on the final assessment</p>
+        <p style="font-size: 13px; font-style: italic; color: #000000; margin: 8px 0;">is hereby awarded to</p>
+        <div style="font-family: 'Cinzel', serif; font-size: 28px; font-weight: 700; color: #004080; margin: 8px 0; text-transform: uppercase; border-bottom: 2px dotted #ffc107; display: inline-block; padding-bottom: 5px;">${currentUser.name.toUpperCase()}</div>
+        <p style="font-size: 12px; margin: 12px 0 5px 0; color:#000000;">for successfully completing the</p>
+        <p style="font-family: 'Cinzel', serif; font-size: 16px; font-weight: 700; color: #004080;">DEVICE ASSESSMENT CERTIFICATION</p>
+        <p style="font-family: 'Cinzel', serif; font-size: 13px; font-weight: 700; color: #004080; margin: 6px 0;">WITH 100% PASSING SCORE</p>
+        <p style="font-size: 11px; margin-top: 4px; color:#000000;">Score: ${lastScore}/10 on the final assessment</p>
       </div>
       
-      <!-- Gold Decorative Line -->
-      <div style="height: 3px; background: linear-gradient(90deg, transparent, #ffc107, #004080, #ffc107, transparent); margin: 20px 0;"></div>
+      <div style="height: 2px; background: linear-gradient(90deg, transparent, #ffc107, #004080, #ffc107, transparent); margin: 18px 0;"></div>
       
-      <!-- Signatures and QR Code -->
-      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 15px;">
-        <!-- CEO Signature -->
-        <div style="text-align: center; width: 30%;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin: 10px 0 15px 0;">
+        <div style="text-align: center; width: 34%;">
           ${ceoSignatureHtml}
-          <div style="font-family: 'Cinzel', serif; font-size: 12px; font-weight: 700; color: #004080; margin-top: 10px;">Mohamed Sillah Kanu</div>
-          <div style="font-size: 10px; color: #000000; font-weight: 600;">Chief Executive Officer, ICF-SL</div>
+          <div style="font-family: 'Cinzel', serif; font-size: 11px; font-weight: 700; color: #000000; margin-top: 8px;">Mohamed Sillah Kanu</div>
+          <div style="font-size: 9px; color: #000000;">Chief Executive Officer, ICF-SL</div>
         </div>
-        
-        <!-- QR Code -->
-        <div style="text-align: center;">
-          <img src="${qrCodeURL}" alt="QR Code" style="width: 85px; height: 85px; border: 2px solid #004080; padding: 3px;">
-          <div style="font-size: 8px; color: #000000; margin-top: 5px; font-weight: 500;">Scan to Verify</div>
-        </div>
-        
-        <!-- Country Lead Signature -->
-        <div style="text-align: center; width: 30%;">
+        <div style="text-align: center; width: 34%;">
           ${clSignatureHtml}
-          <div style="font-family: 'Cinzel', serif; font-size: 12px; font-weight: 700; color: #004080; margin-top: 10px;">Randwulf A.J. Tucker</div>
-          <div style="font-size: 10px; color: #000000; font-weight: 600;">Country Lead Coordinator, ICF-SL</div>
+          <div style="font-family: 'Cinzel', serif; font-size: 11px; font-weight: 700; color: #000000; margin-top: 8px;">Randwulf A.J. Tucker</div>
+          <div style="font-size: 9px; color: #000000;">Country Lead Coordinator, ICF-SL</div>
+        </div>
+        <div style="text-align: center; width: 28%;">
+          <div id="qrPlaceholder" style="margin: 0 auto; display: flex; justify-content: center;"></div>
+          <div style="font-size: 8px; color: #000000; margin-top: 6px; font-weight: 500;">Scan to Verify Authenticity</div>
         </div>
       </div>
       
-      <!-- Footer -->
-      <div style="margin-top: 25px; text-align: center; font-size: 9px; color: #000000; border-top: 2px solid #004080; padding-top: 12px; font-weight: 500;">
+      <div style="margin-top: 15px; text-align: center; font-size: 8px; color: #000000; border-top: 1px solid #aaa; padding-top: 10px;">
         <div style="display: flex; justify-content: space-between;">
-          <span>Date: ${formattedDate}</span>
-          <span>Certificate ID: ${certId}</span>
+          <span>Issue Date: ${formattedDate}</span>
+          <span>Certificate ID: ${currentCertificateId}</span>
         </div>
-        <div style="margin-top: 8px;">Informatics Consultancy Firm-Sierra Leone (ICF-SL)</div>
+        <div style="margin-top: 5px;">Informatics Consultancy Firm-Sierra Leone (ICF-SL)</div>
         <div>Supporting National Malaria Control Programme since 2015</div>
       </div>
     </div>
   `;
 }
 
+function attachQRCodeToCertificate(certificateIdForQR) {
+  const container = document.getElementById('qrPlaceholder');
+  if (container) {
+    container.innerHTML = '';
+    const verificationUrl = `${VERIFICATION_BASE}${certificateIdForQR}`;
+    try {
+      new QRCode(container, {
+        text: verificationUrl,
+        width: 90,
+        height: 90,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    } catch(e) {
+      console.warn("QR error", e);
+      container.innerHTML = '<div style="font-size:9px; color:#000;">QR Code</div>';
+    }
+  }
+}
+
 function showCertificate() {
   const certHTML = generateCertificateHTML();
   document.getElementById('certificateHTML').innerHTML = certHTML;
+  setTimeout(() => {
+    attachQRCodeToCertificate(currentCertificateId);
+  }, 50);
   document.getElementById('certificateModal').classList.add('active');
 }
 
@@ -940,34 +785,58 @@ async function downloadCertificatePDF() {
   const element = document.getElementById('certificateHTML').firstElementChild;
   if (!element) return;
   
+  const qrContainer = document.getElementById('qrPlaceholder');
+  if (qrContainer && qrContainer.children.length === 0) {
+    attachQRCodeToCertificate(currentCertificateId);
+    await new Promise(r => setTimeout(r, 200));
+  }
+  
   const opt = {
     margin: [0, 0, 0, 0],
-    filename: `ICF-SL_Certificate_${currentUser.name.replace(/\s/g, '_')}.pdf`,
+    filename: `ICF-SL_Device_Cert_${currentUser.name.replace(/\s/g, '_')}.pdf`,
     image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true, logging: false },
+    html2canvas: { scale: 2.2, useCORS: true, logging: false, letterRendering: true },
     jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
   };
-  
   try {
     await html2pdf().set(opt).from(element).save();
   } catch (err) {
     console.error('PDF error:', err);
-    alert('Error generating PDF. Please try again.');
+    alert('Error generating PDF. Please ensure stable network for logo and try again.');
   }
 }
 
-// Event listeners
-document.getElementById('userName').addEventListener('input', updateAttemptsDisplay);
-
-// Close modal on escape
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeCertificateModal();
+window.uploadCEOSignature = function(fileInput) {
+  const file = fileInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      ceoSignature = e.target.result;
+      alert('CEO Signature uploaded successfully!');
+    };
+    reader.readAsDataURL(file);
   }
-});
+};
 
-// Initial display
+window.uploadCountryLeadSignature = function(fileInput) {
+  const file = fileInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      countryLeadSignature = e.target.result;
+      alert('Country Lead Signature uploaded successfully!');
+    };
+    reader.readAsDataURL(file);
+  }
+};
+
+document.getElementById('userName').addEventListener('input', updateAttemptsDisplay);
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeCertificateModal();
+});
 updateAttemptsDisplay();
+
+console.log('To upload signatures: uploadCEOSignature(inputElement) or uploadCountryLeadSignature(inputElement)');
 </script>
 </body>
 </html>
