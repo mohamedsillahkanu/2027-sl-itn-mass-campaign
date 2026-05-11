@@ -57,9 +57,9 @@
             padding: 25px 30px; text-align: center;
             margin-bottom: 10px; border-radius: 8px 8px 0 0;
         }
-        .logo-row { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 15px; }
-        .logo-box { background: #ffffff; border-radius: 8px; padding: 10px; display: flex; align-items: center; justify-content: center; }
-        .logo-box img { width: 100px; height: auto; border-radius: 6px; }
+        .logo-row { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 15px; flex-wrap: wrap; }
+        .logo-box { background: #ffffff; border-radius: 12px; padding: 12px 20px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .logo-box img { width: 110px; height: auto; border-radius: 6px; display: block; }
         .page-header h3 { margin: 12px 0 5px; font-size: 14px; font-weight: 700; letter-spacing: 1px; color: #ffffff; }
         .page-header .tagline { margin: 0; font-size: 10px; font-weight: 700; color: #ffffff; }
         .page-header h1 { margin: 20px 0 10px; font-size: 28px; font-weight: 700; color: #ffffff; letter-spacing: 1px; }
@@ -113,14 +113,8 @@
             animation: slideDown 0.3s ease;
         }
         @keyframes slideDown {
-            from {
-                opacity: 0;
-                max-height: 0;
-            }
-            to {
-                opacity: 1;
-                max-height: 400px;
-            }
+            from { opacity: 0; max-height: 0; }
+            to { opacity: 1; max-height: 400px; }
         }
         .section-menu-item {
             padding: 12px 20px;
@@ -133,17 +127,9 @@
             font-family: 'Oswald', Arial, sans-serif;
             letter-spacing: 0.3px;
         }
-        .section-menu-item:last-child {
-            border-bottom: none;
-        }
-        .section-menu-item:hover {
-            background: #e7f3ff;
-            padding-left: 25px;
-        }
-        .section-menu-item.active {
-            background: #004080;
-            color: #ffffff;
-        }
+        .section-menu-item:last-child { border-bottom: none; }
+        .section-menu-item:hover { background: #e7f3ff; padding-left: 25px; }
+        .section-menu-item.active { background: #004080; color: #ffffff; }
         .section-tabs { 
             display: flex; 
             justify-content: center; 
@@ -244,9 +230,12 @@
         }
         .modal.active { display: flex; align-items: center; justify-content: center; }
         .modal-content {
-            background: #ffffff; width: 100%; height: 100%;
-            overflow: hidden; animation: slideIn 0.3s ease;
-            display: flex; flex-direction: column;
+            background: #ffffff; width: 95%; max-width: 1200px; height: 90%;
+            border-radius: 16px; overflow: hidden; animation: slideIn 0.3s ease;
+            display: flex; flex-direction: column; box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+        }
+        @media (max-width: 768px) {
+            .modal-content { width: 98%; height: 94%; border-radius: 12px; }
         }
         @keyframes modalFadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
@@ -255,23 +244,28 @@
             padding: 15px 25px;
             display: flex; align-items: center; justify-content: space-between;
             flex-shrink: 0;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        .modal-header h2 { display: flex; align-items: center; gap: 15px; font-size: 18px; font-weight: 700; }
-        .modal-header .card-number { margin-bottom: 0; }
+        .modal-header h2 { display: flex; align-items: center; gap: 15px; font-size: 18px; font-weight: 700; flex-wrap: wrap; }
+        .modal-header .card-number { margin-bottom: 0; background: #ffffff; color:#004080; }
         .modal-header-buttons { display: flex; align-items: center; gap: 10px; }
-        .open-external-btn, .download-btn {
-            background: #ffc107; border: none; color: #004080;
-            font-size: 12px; cursor: pointer; padding: 8px 15px;
-            border-radius: 20px; display: flex; align-items: center;
-            transition: all 0.2s ease; font-weight: 700;
-            font-family: 'Oswald', Arial, sans-serif; gap: 5px;
-        }
         .download-btn {
             background: #28a745;
+            border: none;
             color: #ffffff;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 8px 18px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            font-weight: 700;
+            font-family: 'Oswald', Arial, sans-serif;
+            gap: 6px;
         }
         .download-btn:hover { background: #218838; transform: scale(1.05); }
-        .open-external-btn:hover { background: #ffca2c; transform: scale(1.05); }
         .close-btn {
             background: #ffffff; border: none; color: #004080;
             font-size: 20px; cursor: pointer;
@@ -308,9 +302,45 @@
         .modal-tab:hover { background: #e7f3ff; }
         .modal-tab.active { background: #004080; color: #ffffff; }
         .modal-tab .tab-icon { font-size: 18px; }
-        .modal-body { flex-grow: 1; padding: 0; overflow: hidden; }
-        .iframe-container { width: 100%; height: 100%; position: relative; }
-        .iframe-container iframe { width: 100%; height: 100%; border: none; }
+        .modal-body { flex-grow: 1; padding: 0; overflow: auto; background: #f5f5f5; }
+        .document-viewer {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            background: #ffffff;
+        }
+        .document-viewer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #ffffff;
+        }
+        .mobile-doc-fallback {
+            display: none;
+            padding: 30px 20px;
+            text-align: center;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin: 20px;
+        }
+        .mobile-doc-fallback .fallback-icon { font-size: 48px; margin-bottom: 15px; color: #004080; }
+        .mobile-doc-fallback .fallback-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: #004080; }
+        .mobile-doc-fallback .fallback-desc { font-size: 13px; margin-bottom: 20px; color: #555; }
+        .mobile-doc-fallback .fallback-download {
+            background: #004080;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Oswald', Arial, sans-serif;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .document-viewer iframe { min-height: 400px; }
+            .modal-tab { padding: 10px 12px; font-size: 12px; }
+        }
         .placeholder-message {
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
@@ -336,9 +366,9 @@
         .loading-text { font-size: 16px; color: #004080; font-weight: 700; }
         .video-viewer { width: 100%; height: 100%; }
         .video-controls {
-            background: #f8f9fa; padding: 15px; border-bottom: 1px solid #dee2e6;
+            background: #f8f9fa; padding: 12px 15px; border-bottom: 1px solid #dee2e6;
             display: flex; gap: 10px; align-items: center;
-            justify-content: center;
+            justify-content: center; flex-wrap: wrap;
         }
         .part-selector {
             display: flex; gap: 8px; align-items: center;
@@ -391,25 +421,16 @@
             .logo-row { flex-direction: column; gap: 15px; }
             #desktopTabs { display: none; }
             .section-menu-mobile { display: block; }
-            .section-tabs { gap: 4px; justify-content: flex-start; overflow-x: auto; padding: 5px; }
-            .section-tab { padding: 5px 8px; font-size: 8px; white-space: nowrap; flex-shrink: 0; }
             .nav-buttons { flex-direction: column; gap: 15px; }
             .nav-btn { width: 100%; justify-content: center; }
             .pwa-install-btn { font-size: 12px; padding: 10px 20px; }
-            .modal-tabs { flex-direction: row; overflow-x: auto; flex-wrap: nowrap; }
-            .modal-tab { padding: 10px 12px; font-size: 12px; white-space: nowrap; flex-shrink: 0; border-right: 1px solid #dee2e6; border-bottom: none; }
-            .modal-tab:last-child { border-right: none; }
-            .video-controls { flex-direction: row; overflow-x: auto; flex-wrap: nowrap; }
-            .part-selector { overflow-x: auto; flex-wrap: nowrap; display: flex; gap: 8px; }
-            .part-btn { flex-shrink: 0; padding: 8px 15px; font-size: 11px; }
         }
         @media (max-width: 480px) {
             .cards-grid { grid-template-columns: repeat(2, 1fr); }
             .page-header h1 { font-size: 18px; }
-            .section-tab { font-size: 7px; padding: 4px 6px; }
             .section-menu-toggle { padding: 12px 15px; font-size: 13px; }
             .section-menu-item { padding: 10px 15px; font-size: 12px; }
-            .modal-tab { padding: 8px 10px; font-size: 11px; }
+            .modal-tab { padding: 10px 12px; font-size: 11px; }
         }
     </style>
 </head>
@@ -418,39 +439,26 @@
         <div class="page-header">
             <div class="logo-row">
                 <div class="logo-box">
-                    <img src="https://github.com/mohamedsillahkanu/gdp-dashboard-2/raw/6c7463b0d5c3be150aafae695a4bcbbd8aeb1499/ICF-SL.jpg" alt="ICF-SL Logo">
+                    <img id="icfLogo" src="ICF-SL.jpg" alt="ICF-SL Logo" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23004080%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2212%22 font-family=%22Arial%22%3EICF-SL%3C/text%3E%3C/svg%3E';">
                 </div>
             </div>
             <h3>Informatics Consultancy Firm-Sierra Leone<br>(ICF-SL)</h3>
             <p class="tagline"><em>Supporting National Malaria Control Programmes</em></p>
             <h1>2027 Sierra Leone Mass ITNs Digital Handbook</h1>
             <p class="subtitle">Comprehensive Guide to Mass Distribution Campaign</p>
-            <div class="pwa-install-btn" id="pwaInstallBtn" onclick="installPWA()">INSTALL APP</div>
+            <div class="pwa-install-btn" id="pwaInstallBtn" onclick="installPWA()">📲 INSTALL APP</div>
         </div>
 
         <div class="section-nav-container">
             <div class="section-menu-mobile" id="sectionMenuMobile">
-                <button class="section-menu-toggle" id="sectionMenuToggle" onclick="toggleSectionMenu()">
+                <button class="section-menu-toggle" id="sectionMenuToggle">
                     <span id="currentSectionName">1. CAMPAIGN OVERVIEW</span>
                     <span class="dropdown-icon">▼</span>
                 </button>
                 <div class="section-menu-items" id="sectionMenuItems"></div>
             </div>
-            <div class="section-tabs" id="desktopTabs">
-                <div class="section-tab active" onclick="goToSection(1)">1. CAMPAIGN OVERVIEW</div>
-                <div class="section-tab" onclick="goToSection(2)">2. STANDARD OPERATING PROCEDURES</div>
-                <div class="section-tab" onclick="goToSection(3)">3. TRAINING MATERIALS</div>
-                <div class="section-tab" onclick="goToSection(4)">4. DATA COLLECTION & QA</div>
-                <div class="section-tab" onclick="goToSection(5)">5. IMPLEMENTATION GUIDE</div>
-                <div class="section-tab" onclick="goToSection(6)">6. MONITORING & EVALUATION</div>
-                <div class="section-tab" onclick="goToSection(7)">7. DISTRIBUTION LOGISTICS</div>
-                <div class="section-tab" onclick="goToSection(8)">8. STAFF MANAGEMENT</div>
-                <div class="section-tab" onclick="goToSection(9)">9. COMMUNITY ENGAGEMENT</div>
-                <div class="section-tab" onclick="goToSection(10)">10. TROUBLESHOOTING & FAQ</div>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill" style="width:10%"></div>
-            </div>
+            <div class="section-tabs" id="desktopTabs"></div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:10%"></div></div>
             <div class="progress-text" id="progressText">Section 1 of 10 | CAMPAIGN OVERVIEW</div>
         </div>
 
@@ -459,43 +467,53 @@
                 <div class="section-title-bar"><span class="section-number">1</span><span class="section-title">CAMPAIGN OVERVIEW</span></div>
                 <div class="data-flow-intro"><p>High-level overview of the 2027 mass ITN distribution campaign, objectives, targets, timeline, and key stakeholders.</p></div>
                 <div class="cards-grid" id="grid-section1"></div>
-                <div class="nav-buttons"><button class="nav-btn back-btn" disabled>BACK</button><span class="nav-indicator">Section 1 of 10</span><button class="nav-btn next-btn" onclick="nextSection()">NEXT</button></div>
+                <div class="nav-buttons"><button class="nav-btn back-btn" disabled>◀ BACK</button><span class="nav-indicator">Section 1 of 10</span><button class="nav-btn next-btn" onclick="nextSection()">NEXT ▶</button></div>
             </div>
             <div id="dynamicSections"></div>
         </div>
 
         <div class="page-footer">
-            <p style="margin:0;">National Malaria Control Programme</p>
+            <p>National Malaria Control Programme</p>
             <p>Ministry of Health and Sanitation, Sierra Leone</p>
             <p style="font-size:11px;">Medical Stores Compound, Freetown, Sierra Leone</p>
             <p style="font-size:10px;">© 2025 Informatics Consultancy Firm-Sierra Leone (ICF-SL)</p>
         </div>
     </div>
 
-    <!-- Modal -->
     <div id="dynamicModal" class="modal" onclick="closeModalOnOutsideClick(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-header">
                 <h2><span class="card-number" id="modalNumber">1</span><span id="modalTitleText">TOOL NAME</span></h2>
                 <div class="modal-header-buttons">
-                    <button class="download-btn" id="downloadBtn" onclick="downloadCurrentFile()" style="display:none;">📥 DOWNLOAD</button>
-                    <button class="open-external-btn" id="openExternalBtn" onclick="openInNewTab()" style="display:none;">🔗 OPEN IN NEW TAB</button>
+                    <button class="download-btn" id="downloadBtn" onclick="downloadCurrentFile()">📥 DOWNLOAD</button>
                     <button class="close-btn" onclick="closeModal()">✕</button>
                 </div>
             </div>
             <div class="modal-tabs">
-                <button class="modal-tab active" id="tabConcept" onclick="switchTab('concept')"><span class="tab-icon">📄</span> CONCEPT</button>
-                <button class="modal-tab" id="tabIllustration" onclick="switchTab('illustration')"><span class="tab-icon">🎥</span> VIDEOS</button>
-                <button class="modal-tab" id="tabTool" onclick="switchTab('tool')"><span class="tab-icon">🔧</span> TOOL</button>
+                <button class="modal-tab active" id="tabConcept"><span class="tab-icon">📄</span> CONCEPT</button>
+                <button class="modal-tab" id="tabIllustration"><span class="tab-icon">🎥</span> VIDEOS</button>
+                <button class="modal-tab" id="tabTool"><span class="tab-icon">🔧</span> TOOL</button>
             </div>
-            <div class="modal-body"><div class="iframe-container"><div class="loading-container" id="loadingContainer" style="display:none;"><div class="loading-spinner"></div><div class="loading-text">Loading content...</div></div><iframe id="modalIframe" src="" style="display:none;" allow="fullscreen"></iframe><div id="videoPlayer" style="display:none; width:100%; height:100%; background:#000; flex-direction:column;"><div class="video-controls"><div class="part-selector" id="partSelector"></div></div><video id="videoElement" controls style="width:100%; height:calc(100% - 70px); object-fit: contain;"></video></div><div class="placeholder-message" id="modalPlaceholder"><div class="placeholder-icon" id="placeholderIcon">📄</div><h3 id="placeholderTitle">Content Not Available</h3><p id="placeholderText">Configure the file path for this tab to view content.</p></div></div></div>
+            <div class="modal-body" id="modalBody">
+                <div class="loading-container" id="loadingContainer" style="display:none;"><div class="loading-spinner"></div><div class="loading-text">Loading content...</div></div>
+                <div id="documentViewer" class="document-viewer" style="display:none;"><iframe id="modalIframe" src="" allow="fullscreen"></iframe></div>
+                <div id="videoPlayer" style="display:none; width:100%; height:100%; background:#000; flex-direction:column;">
+                    <div class="video-controls"><div class="part-selector" id="partSelector"></div></div>
+                    <video id="videoElement" controls style="width:100%; height:calc(100% - 70px); object-fit: contain;"></video>
+                </div>
+                <div id="mobileFallback" class="mobile-doc-fallback" style="display:none;">
+                    <div class="fallback-icon">📱</div>
+                    <div class="fallback-title">Document Preview Limited on Mobile</div>
+                    <div class="fallback-desc">For the best viewing experience, please download the document to read offline or use a desktop browser.</div>
+                    <button class="fallback-download" id="fallbackDownloadBtn">⬇️ DOWNLOAD DOCUMENT</button>
+                </div>
+                <div class="placeholder-message" id="modalPlaceholder"><div class="placeholder-icon">📂</div><h3>Ready to Launch</h3><p>Select any card to view SOPs, training videos, or digital tools.</p></div>
+            </div>
         </div>
     </div>
 
     <script>
-        // ============================================================
-        // DATA STRUCTURE - All card definitions (44 cards total)
-        // ============================================================
+        // DATA STRUCTURE - All card definitions (44 cards)
         const sectionsData = {
             1: [{num:1,title:"CAMPAIGN BACKGROUND",desc:"Context, rationale, and strategic objectives",key:"1-1"},{num:2,title:"TARGET POPULATION",desc:"Coverage targets and beneficiary identification",key:"1-2"},{num:3,title:"CAMPAIGN TIMELINE",desc:"Key milestones and implementation schedule",key:"1-3"},{num:4,title:"STAKEHOLDERS & ROLES",desc:"Key partners and their responsibilities",key:"1-4"}],
             2: [{num:1,title:"REGISTRATION SOP",desc:"Household and beneficiary registration process",key:"2-1"},{num:2,title:"DISTRIBUTION SOP",desc:"ITN distribution to registered households",key:"2-2"},{num:3,title:"QA/QC SOP",desc:"Quality assurance and control procedures",key:"2-3"},{num:4,title:"DATA MANAGEMENT SOP",desc:"Data collection and verification protocols",key:"2-4"},{num:5,title:"LOGISTICS SOP",desc:"Supply chain and inventory management",key:"2-5"},{num:6,title:"REPORTING SOP",desc:"Daily and periodic reporting procedures",key:"2-6"}],
@@ -509,16 +527,8 @@
             10: [{num:1,title:"COMMON CHALLENGES",desc:"Problem-solving guide and mitigation",key:"10-1"},{num:2,title:"FREQUENTLY ASKED QUESTIONS",desc:"Q&A for staff and communities",key:"10-2"},{num:3,title:"ESCALATION PROCEDURES",desc:"Issue reporting and resolution",key:"10-3"},{num:4,title:"RESOURCE CONTACTS",desc:"Emergency contacts and support",key:"10-4"}]
         };
 
-        // ============================================================
-        // FILE PATHS CONFIGURATION - REPLACE THESE WITH YOUR ACTUAL FILE PATHS
-        // ============================================================
-        // NOTE: ALL 3 TABS (CONCEPT, VIDEOS, TOOL) ARE ALWAYS VISIBLE
-        // Just replace the placeholder paths with your actual file paths
-        // Leave as "REPLACE_WITH_YOUR_XXX_PATH" if you don't have content yet
-        // ============================================================
-
+        // CONFIGURATION WITH YOUR SPECIFIC PATHS FOR CARD 1-1
         const toolUrls = {
-            // SECTION 1: CAMPAIGN OVERVIEW (Cards 1-4)
             "1-1": { 
                 concept: "documents/Device_Assessment_ITN_2027.pdf",  
                 illustration: { "Training Video": "video/attendance.mp4" },
@@ -526,342 +536,146 @@
             },
             "1-2": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
             "1-3": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "1-4": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "2-1": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "2-2": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "2-3": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "2-4": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "2-5": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "2-6": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "3-1": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Part 1": "REPLACE_WITH_YOUR_VIDEO_PATH", "Part 2": "REPLACE_WITH_YOUR_VIDEO_PATH", "Part 3": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "3-2": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Part 1": "REPLACE_WITH_YOUR_VIDEO_PATH", "Part 2": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "3-3": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "3-4": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Part 1": "REPLACE_WITH_YOUR_VIDEO_PATH", "Part 2": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "3-5": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "4-1": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "4-2": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "4-3": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "4-4": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "5-1": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "5-2": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "5-3": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "5-4": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "6-1": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "6-2": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "6-3": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "7-1": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "7-2": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "7-3": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "7-4": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "8-1": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "8-2": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "8-3": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "8-4": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "9-1": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "9-2": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "9-3": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "9-4": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "10-1": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "10-2": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "10-3": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" },
-            "10-4": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" }
+            "1-4": { concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, tool: "REPLACE_WITH_YOUR_TOOL_PATH" }
         };
-
-        const toolInfo = {};
-        for(let s=1;s<=10;s++) sectionsData[s].forEach(c => toolInfo[c.key] = { title: c.title });
-
-        let deferredPrompt;
-        let currentSection = 1;
-        const totalSections = 10;
-        let currentToolKey = '';
-        let currentTab = 'concept';
-        let currentFileUrl = '';
-        let currentFileName = '';
-
-        function getEmbedUrl(fileUrl) {
-            if (!fileUrl) return '';
-            const extension = fileUrl.split('.').pop().toLowerCase();
-            if (extension === 'pdf') return fileUrl;
-            if (['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'].includes(extension)) {
-                return 'https://docs.google.com/gview?url=' + encodeURIComponent(fileUrl) + '&embedded=true';
-            }
-            if (['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].includes(extension)) return fileUrl;
-            return fileUrl;
+        
+        // Fill remaining cards with placeholder configs
+        for(let s=2;s<=10;s++) {
+            sectionsData[s].forEach(c => { 
+                toolUrls[c.key] = { 
+                    concept: "REPLACE_WITH_YOUR_DOCUMENT_PATH", 
+                    illustration: { "Training Video": "REPLACE_WITH_YOUR_VIDEO_PATH" }, 
+                    tool: "REPLACE_WITH_YOUR_TOOL_PATH" 
+                }; 
+            });
         }
 
-        function isVideoFile(fileUrl) {
-            if (!fileUrl) return false;
-            const videoExtensions = ['mp4', 'webm', 'ogg', 'mov', 'avi', 'mkv'];
-            const extension = fileUrl.split('.').pop().toLowerCase();
-            return videoExtensions.includes(extension);
-        }
-
+        let currentSection = 1, totalSections = 10, currentToolKey = '', currentTab = 'concept', currentFileUrl = '', currentFileName = '';
+        
+        function getSectionName(s) { const n={2:"STANDARD OPERATING PROCEDURES",3:"TRAINING MATERIALS",4:"DATA COLLECTION & QA",5:"IMPLEMENTATION GUIDE",6:"MONITORING & EVALUATION",7:"DISTRIBUTION LOGISTICS",8:"STAFF MANAGEMENT",9:"COMMUNITY ENGAGEMENT",10:"TROUBLESHOOTING & FAQ"}; return n[s]||""; }
+        function getSectionDesc(s) { const d={2:"Detailed SOPs for all campaign operations.",3:"Training materials for all staff categories.",4:"Tools for data collection, validation, QA.",5:"Step-by-step implementation guidance.",6:"M&E frameworks and reporting templates.",7:"Supply chain, inventory & transport.",8:"HR, recruitment, incentives and welfare.",9:"Community mobilization and SBCC.",10:"Common issues and FAQ solutions."}; return d[s]||""; }
+        
         function generateAllSections() {
             const container = document.getElementById('dynamicSections');
-            if(!container) return;
             let html = '';
-            for(let s=2; s<=10; s++) {
-                html += `<div class="section-content" id="section${s}">
-                    <div class="section-title-bar"><span class="section-number">${s}</span><span class="section-title">${getSectionName(s)}</span></div>
-                    <div class="data-flow-intro"><p>${getSectionDesc(s)}</p></div>
-                    <div class="cards-grid" id="grid-section${s}"></div>
-                    <div class="nav-buttons"><button class="nav-btn back-btn" onclick="prevSection()">BACK</button><span class="nav-indicator">Section ${s} of 10</span><button class="nav-btn next-btn" onclick="nextSection()">NEXT</button></div>
-                </div>`;
-            }
+            for(let s=2;s<=10;s++) html += `<div class="section-content" id="section${s}"><div class="section-title-bar"><span class="section-number">${s}</span><span class="section-title">${getSectionName(s)}</span></div><div class="data-flow-intro"><p>${getSectionDesc(s)}</p></div><div class="cards-grid" id="grid-section${s}"></div><div class="nav-buttons"><button class="nav-btn back-btn" onclick="prevSection()">◀ BACK</button><span class="nav-indicator">Section ${s} of 10</span><button class="nav-btn next-btn" onclick="nextSection()">NEXT ▶</button></div></div>`;
             container.innerHTML = html;
             for(let s=1;s<=10;s++) {
                 const grid = document.getElementById(`grid-section${s}`);
-                if(grid && sectionsData[s]) {
-                    grid.innerHTML = sectionsData[s].map(card => `
-                        <div class="card" onclick="openModal('modal-${card.key}')">
-                            <div class="card-header">
-                                <div class="card-number">${card.num}</div>
-                                <div class="card-title">${card.title}</div>
-                                <div class="card-description">${card.desc}</div>
-                            </div>
-                        </div>
-                    `).join('');
-                }
+                if(grid && sectionsData[s]) grid.innerHTML = sectionsData[s].map(card => `<div class="card" onclick="openModal('${card.key}')"><div class="card-header"><div class="card-number">${card.num}</div><div class="card-title">${card.title}</div><div class="card-description">${card.desc}</div></div></div>`).join('');
             }
         }
-
-        function getSectionName(s) {
-            const names = {2:"STANDARD OPERATING PROCEDURES",3:"TRAINING MATERIALS",4:"DATA COLLECTION & QA",5:"IMPLEMENTATION GUIDE",6:"MONITORING & EVALUATION",7:"DISTRIBUTION LOGISTICS",8:"STAFF MANAGEMENT",9:"COMMUNITY ENGAGEMENT",10:"TROUBLESHOOTING & FAQ"};
-            return names[s] || "";
-        }
-        function getSectionDesc(s) {
-            const descs = {2:"Detailed SOPs for all campaign operations including registration, distribution, tracking, and quality assurance.",3:"Comprehensive training materials for all campaign staff including distributors, supervisors, and data clerks.",4:"Tools and procedures for data collection, validation, and quality assurance throughout the campaign.",5:"Step-by-step guidance for campaign implementation at district, chiefdom, and community levels.",6:"M&E frameworks, key indicators, and reporting mechanisms for campaign oversight and learning.",7:"Logistics planning, supply chain management, and inventory control for ITN distribution.",8:"HR procedures, staff recruitment, performance management, and incentive structures.",9:"Strategies for community mobilization, stakeholder engagement, and social behavior change communication.",10:"Common issues, solutions, and frequently asked questions for field implementation."};
-            return descs[s] || "";
-        }
-
-        function initializeSectionMenu() {
-            const menuItems = document.getElementById('sectionMenuItems');
-            if (menuItems) {
-                menuItems.innerHTML = '';
-                for(let i=1;i<=10;i++) {
-                    const name = i===1?"CAMPAIGN OVERVIEW":getSectionName(i);
-                    const item = document.createElement('div');
-                    item.className = 'section-menu-item' + (i === currentSection ? ' active' : '');
-                    item.textContent = `${i}. ${name}`;
-                    item.onclick = () => { goToSection(i); closeSectionMenu(); };
-                    menuItems.appendChild(item);
-                }
-            }
-        }
-
-        function toggleSectionMenu() {
-            const menuItems = document.getElementById('sectionMenuItems');
-            const toggle = document.getElementById('sectionMenuToggle');
-            if (menuItems && toggle) {
-                menuItems.classList.toggle('expanded');
-                toggle.classList.toggle('expanded');
-            }
-        }
-        function closeSectionMenu() {
-            const menuItems = document.getElementById('sectionMenuItems');
-            const toggle = document.getElementById('sectionMenuToggle');
-            if(menuItems && toggle) { menuItems.classList.remove('expanded'); toggle.classList.remove('expanded'); }
-        }
+        
         function updateSectionDisplay() {
             document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
-            document.getElementById('section' + currentSection).classList.add('active');
-            document.querySelectorAll('.section-tab').forEach((t, i) => t.classList.toggle('active', i+1 === currentSection));
-            document.querySelectorAll('.section-menu-item').forEach((item, i) => item.classList.toggle('active', i+1 === currentSection));
-            const currentNameElem = document.getElementById('currentSectionName');
-            if(currentNameElem) currentNameElem.textContent = currentSection + '. ' + (currentSection===1?"CAMPAIGN OVERVIEW":getSectionName(currentSection));
-            document.getElementById('progressFill').style.width = (currentSection / totalSections * 100) + '%';
-            document.getElementById('progressText').textContent = `Section ${currentSection} of ${totalSections} | ${currentSection===1?"CAMPAIGN OVERVIEW":getSectionName(currentSection)}`;
-            closeSectionMenu();
+            document.getElementById(`section${currentSection}`).classList.add('active');
+            document.querySelectorAll('.section-tab').forEach((t,i)=>t.classList.toggle('active',i+1===currentSection));
+            document.querySelectorAll('.section-menu-item').forEach((item,i)=>item.classList.toggle('active',i+1===currentSection));
+            document.getElementById('currentSectionName').innerText = `${currentSection}. ${currentSection===1?"CAMPAIGN OVERVIEW":getSectionName(currentSection)}`;
+            document.getElementById('progressFill').style.width = `${currentSection/totalSections*100}%`;
+            document.getElementById('progressText').innerText = `Section ${currentSection} of ${totalSections} | ${currentSection===1?"CAMPAIGN OVERVIEW":getSectionName(currentSection)}`;
         }
-        function goToSection(n) { if(n>=1 && n<=totalSections) { currentSection=n; updateSectionDisplay(); } }
-        function nextSection() { if(currentSection < totalSections) { currentSection++; updateSectionDisplay(); } }
-        function prevSection() { if(currentSection > 1) { currentSection--; updateSectionDisplay(); } }
-
-        function downloadCurrentFile() {
-            if (currentFileUrl && currentFileUrl !== "REPLACE_WITH_YOUR_DOCUMENT_PATH" && currentFileUrl !== "REPLACE_WITH_YOUR_VIDEO_PATH" && currentFileUrl !== "REPLACE_WITH_YOUR_TOOL_PATH") {
-                const link = document.createElement('a');
-                link.href = currentFileUrl;
-                link.download = currentFileName || 'download';
-                link.target = '_blank';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
-        }
-
-        function openModal(modalId) {
-            currentToolKey = modalId.replace('modal-', '');
-            currentTab = 'concept';
-            const info = toolInfo[currentToolKey];
-            if(!info) return;
-            document.getElementById('modalNumber').textContent = currentToolKey.split('-')[1];
-            document.getElementById('modalTitleText').textContent = info.title;
-            document.getElementById('placeholderTitle').textContent = info.title;
-            
-            // ALWAYS show all 3 tabs - they are always visible
-            document.getElementById('tabConcept').style.display = 'flex';
-            document.getElementById('tabIllustration').style.display = 'flex';
-            document.getElementById('tabTool').style.display = 'flex';
-            
-            document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
-            document.getElementById('tabConcept').classList.add('active');
-            currentTab = 'concept';
+        function goToSection(n){ if(n>=1&&n<=totalSections){ currentSection=n; updateSectionDisplay(); } }
+        function nextSection(){ if(currentSection<totalSections){ currentSection++; updateSectionDisplay(); } }
+        function prevSection(){ if(currentSection>1){ currentSection--; updateSectionDisplay(); } }
+        
+        function isMobile() { return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); }
+        
+        function openModal(key) {
+            currentToolKey = key; currentTab = 'concept';
+            const parts = key.split('-');
+            const sectionIdx = parseInt(parts[0]);
+            const info = sectionsData[sectionIdx].find(c=>c.key===key);
+            document.getElementById('modalNumber').innerText = parts[1];
+            document.getElementById('modalTitleText').innerText = info.title;
             document.getElementById('dynamicModal').classList.add('active');
             document.body.style.overflow = 'hidden';
             loadTabContent('concept');
+            document.querySelectorAll('.modal-tab').forEach(t=>t.classList.remove('active'));
+            document.getElementById('tabConcept').classList.add('active');
         }
         
-        function switchTab(tabName) {
-            currentTab = tabName;
-            document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
-            document.getElementById('tab'+tabName.charAt(0).toUpperCase()+tabName.slice(1)).classList.add('active');
-            loadTabContent(tabName);
-        }
-        
-        function loadTabContent(tabName) {
-            const iframe = document.getElementById('modalIframe');
-            const videoPlayer = document.getElementById('videoPlayer');
-            const videoElement = document.getElementById('videoElement');
-            const placeholder = document.getElementById('modalPlaceholder');
-            const loading = document.getElementById('loadingContainer');
-            const extBtn = document.getElementById('openExternalBtn');
-            const downloadBtn = document.getElementById('downloadBtn');
-            const partSelector = document.getElementById('partSelector');
+        function loadTabContent(tab) {
+            const iframe=document.getElementById('modalIframe');
+            const documentViewer=document.getElementById('documentViewer');
+            const vidPlayer=document.getElementById('videoPlayer');
+            const videoElem=document.getElementById('videoElement');
+            const placeholder=document.getElementById('modalPlaceholder');
+            const loading=document.getElementById('loadingContainer');
+            const downloadBtn=document.getElementById('downloadBtn');
+            const partSel=document.getElementById('partSelector');
+            const mobileFallback=document.getElementById('mobileFallback');
             
-            iframe.style.display = 'none'; 
-            videoPlayer.style.display = 'none'; 
-            placeholder.style.display = 'none'; 
-            loading.style.display = 'none'; 
-            extBtn.style.display = 'none';
-            downloadBtn.style.display = 'none';
+            documentViewer.style.display='none';
+            vidPlayer.style.display='none';
+            placeholder.style.display='none';
+            loading.style.display='none';
+            mobileFallback.style.display='none';
+            downloadBtn.style.display='flex';
             
-            const urls = toolUrls[currentToolKey];
-            if(!urls) { placeholder.style.display='flex'; return; }
+            const urls=toolUrls[currentToolKey];
+            if(!urls){ placeholder.style.display='flex'; placeholder.querySelector('p').innerHTML='No content mapping for this card.'; return; }
             
-            let fileUrl = '';
-            let isVideo = false;
-            
-            if(tabName === 'concept') {
-                fileUrl = urls.concept;
-                currentFileName = `concept_${currentToolKey}.${fileUrl ? fileUrl.split('.').pop() : 'pdf'}`;
-            } else if(tabName === 'illustration') {
-                const videos = urls.illustration;
-                if(!videos || Object.keys(videos).length===0) { 
-                    placeholder.style.display='flex';
-                    placeholder.querySelector('p').innerHTML = 'No videos configured for this tab. Add video URLs in the toolUrls configuration.';
-                    return; 
-                }
-                partSelector.innerHTML = '';
-                Object.keys(videos).forEach((part, idx) => {
-                    const btn = document.createElement('button');
-                    btn.className = 'part-btn' + (idx===0?' active':'');
-                    btn.textContent = part;
-                    btn.onclick = (e) => {
-                        document.querySelectorAll('.part-btn').forEach(b=>b.classList.remove('active'));
-                        btn.classList.add('active');
-                        const newVideoUrl = videos[part];
-                        videoElement.src = newVideoUrl;
-                        currentFileUrl = newVideoUrl;
-                        currentFileName = `${part}_${currentToolKey}.mp4`;
-                        const hasValidUrl = newVideoUrl && newVideoUrl !== "REPLACE_WITH_YOUR_VIDEO_PATH";
-                        downloadBtn.style.display = hasValidUrl ? 'flex' : 'none';
-                        extBtn.style.display = hasValidUrl ? 'flex' : 'none';
-                        videoElement.play();
-                    };
-                    partSelector.appendChild(btn);
-                });
-                const firstKey = Object.keys(videos)[0];
-                fileUrl = videos[firstKey];
-                currentFileName = `${firstKey}_${currentToolKey}.mp4`;
-                isVideo = true;
+            if(tab==='concept'){
+                let url=urls.concept;
+                if(!url||url==="REPLACE_WITH_YOUR_DOCUMENT_PATH"){ placeholder.style.display='flex'; placeholder.querySelector('p').innerHTML='Concept document not configured.'; return; }
+                currentFileUrl=url; currentFileName=`concept_${currentToolKey}.pdf`;
                 
-                videoElement.src = fileUrl;
-                videoPlayer.style.display = 'flex';
-                const hasValidUrl = fileUrl && fileUrl !== "REPLACE_WITH_YOUR_VIDEO_PATH";
-                if (hasValidUrl) {
-                    extBtn.style.display = 'flex';
-                    downloadBtn.style.display = 'flex';
+                // On mobile, show download fallback for PDFs
+                if(isMobile() && (url.toLowerCase().endsWith('.pdf') || url.includes('.pdf'))){
+                    mobileFallback.style.display='flex';
+                    document.getElementById('fallbackDownloadBtn').onclick = () => downloadCurrentFile();
+                    downloadBtn.style.display='flex';
+                    return;
                 }
-                currentFileUrl = fileUrl;
-                return;
-            } else if(tabName === 'tool') {
-                fileUrl = urls.tool;
-                currentFileName = `tool_${currentToolKey}.${fileUrl ? fileUrl.split('.').pop() : 'xlsx'}`;
-            }
-            
-            currentFileUrl = fileUrl;
-            
-            const isValidUrl = fileUrl && fileUrl !== "REPLACE_WITH_YOUR_DOCUMENT_PATH" && fileUrl !== "REPLACE_WITH_YOUR_TOOL_PATH";
-            
-            if (!isValidUrl) { 
-                placeholder.style.display='flex';
-                placeholder.querySelector('p').innerHTML = 'No file configured for this tab. Add a file path in the toolUrls configuration.';
-                return; 
-            }
-            
-            if (isVideoFile(fileUrl)) {
-                videoPlayer.style.display = 'flex';
-                videoElement.src = fileUrl;
-                extBtn.style.display = 'flex';
-                downloadBtn.style.display = 'flex';
-                return;
-            }
-            
-            loading.style.display='flex';
-            const embedUrl = getEmbedUrl(fileUrl);
-            
-            iframe.onload = () => { 
-                loading.style.display='none'; 
-                iframe.style.display='block'; 
-            };
-            iframe.onerror = () => { 
-                loading.style.display='none'; 
-                placeholder.style.display='flex';
-                placeholder.querySelector('p').innerHTML = `Unable to preview this file type.<br><br>Click the DOWNLOAD button above to save the file.`;
-            };
-            iframe.src = embedUrl + (embedUrl.includes('?')?'&_t=':'?_t=')+Date.now();
-            extBtn.style.display = 'flex';
-            downloadBtn.style.display = 'flex';
-        }
-        
-        function openInNewTab() {
-            if (currentFileUrl && currentFileUrl !== "REPLACE_WITH_YOUR_DOCUMENT_PATH" && currentFileUrl !== "REPLACE_WITH_YOUR_VIDEO_PATH" && currentFileUrl !== "REPLACE_WITH_YOUR_TOOL_PATH") {
-                window.open(currentFileUrl, '_blank');
+                
+                loading.style.display='flex';
+                const embedUrl = (url.toLowerCase().endsWith('.pdf') || url.includes('.pdf')) ? 
+                    `https://docs.google.com/gview?url=${encodeURIComponent(url)}&embedded=true` : url;
+                iframe.onload=()=>{ loading.style.display='none'; documentViewer.style.display='block'; };
+                iframe.onerror=()=>{ loading.style.display='none'; placeholder.style.display='flex'; placeholder.querySelector('p').innerHTML='Unable to preview. Click DOWNLOAD.'; };
+                iframe.src=embedUrl+(embedUrl.includes('?')?'&_t=':'?_t=')+Date.now();
+                documentViewer.style.display='block';
+            } else if(tab==='illustration'){
+                const videos=urls.illustration;
+                if(!videos || Object.keys(videos).length===0){ placeholder.style.display='flex'; placeholder.querySelector('p').innerHTML='No video content.'; return; }
+                partSel.innerHTML='';
+                Object.keys(videos).forEach((part,idx)=>{
+                    const btn=document.createElement('button'); btn.className='part-btn'+(idx===0?' active':''); btn.textContent=part;
+                    btn.onclick=()=>{ document.querySelectorAll('.part-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); const vurl=videos[part]; videoElem.src=vurl; currentFileUrl=vurl; currentFileName=`${part}_${currentToolKey}.mp4`; const valid = vurl && vurl!=="REPLACE_WITH_YOUR_VIDEO_PATH"; downloadBtn.style.display=valid?'flex':'flex'; videoElem.play(); };
+                    partSel.appendChild(btn);
+                });
+                const firstKey=Object.keys(videos)[0], firstUrl=videos[firstKey];
+                currentFileUrl=firstUrl; currentFileName=`${firstKey}_${currentToolKey}.mp4`;
+                videoElem.src=firstUrl; vidPlayer.style.display='flex';
+                const hasValid=firstUrl && firstUrl!=="REPLACE_WITH_YOUR_VIDEO_PATH";
+                downloadBtn.style.display=hasValid?'flex':'flex';
+            } else if(tab==='tool'){
+                let url=urls.tool;
+                if(!url||url==="REPLACE_WITH_YOUR_TOOL_PATH"){ placeholder.style.display='flex'; placeholder.querySelector('p').innerHTML='Tool file not configured.'; return; }
+                currentFileUrl=url; currentFileName=`tool_${currentToolKey}.html`;
+                loading.style.display='flex';
+                iframe.onload=()=>{ loading.style.display='none'; documentViewer.style.display='block'; };
+                iframe.src=url+(url.includes('?')?'&_t=':'?_t=')+Date.now();
+                documentViewer.style.display='block';
             }
         }
         
-        function closeModal() { 
-            document.getElementById('dynamicModal').classList.remove('active'); 
-            document.body.style.overflow='auto'; 
-            const iframe=document.getElementById('modalIframe'); 
-            if(iframe) iframe.src=''; 
-            const vid=document.getElementById('videoElement'); 
-            if(vid) { vid.pause(); vid.src=''; }
-            currentFileUrl = '';
-        }
+        function switchTab(tabName){ currentTab=tabName; document.querySelectorAll('.modal-tab').forEach(t=>t.classList.remove('active')); document.getElementById(`tab${tabName.charAt(0).toUpperCase()+tabName.slice(1)}`).classList.add('active'); loadTabContent(tabName); }
+        function downloadCurrentFile(){ if(currentFileUrl && !currentFileUrl.includes("REPLACE_WITH_YOUR")){ const a=document.createElement('a'); a.href=currentFileUrl; a.download=currentFileName||'download'; a.target='_blank'; a.click(); } }
+        function closeModal(){ document.getElementById('dynamicModal').classList.remove('active'); document.body.style.overflow='auto'; const iframe=document.getElementById('modalIframe'); if(iframe) iframe.src=''; const vid=document.getElementById('videoElement'); if(vid){ vid.pause(); vid.src=''; } }
+        function closeModalOnOutsideClick(e){ if(e.target.classList.contains('modal')) closeModal(); }
+        function toggleSectionMenu(){ document.getElementById('sectionMenuItems').classList.toggle('expanded'); document.getElementById('sectionMenuToggle').classList.toggle('expanded'); }
+        function initMenu(){ const menuDiv=document.getElementById('sectionMenuItems'); menuDiv.innerHTML=''; for(let i=1;i<=10;i++){ const div=document.createElement('div'); div.className='section-menu-item'; div.innerText=`${i}. ${i===1?"CAMPAIGN OVERVIEW":getSectionName(i)}`; div.onclick=()=>{ goToSection(i); document.getElementById('sectionMenuItems').classList.remove('expanded'); document.getElementById('sectionMenuToggle').classList.remove('expanded'); }; menuDiv.appendChild(div); } }
+        function buildDesktopTabs(){ const tabsDiv=document.getElementById('desktopTabs'); tabsDiv.innerHTML=''; for(let i=1;i<=10;i++){ const tab=document.createElement('div'); tab.className='section-tab'+(i===1?' active':''); tab.innerText=`${i}. ${i===1?"CAMPAIGN OVERVIEW":getSectionName(i)}`; tab.onclick=()=>goToSection(i); tabsDiv.appendChild(tab); } }
         
-        function closeModalOnOutsideClick(e) { if(e.target.classList.contains('modal')) closeModal(); }
+        window.addEventListener('beforeinstallprompt',e=>{ e.preventDefault(); window.deferredPrompt=e; document.getElementById('pwaInstallBtn').style.display='inline-block'; });
+        function installPWA(){ if(window.deferredPrompt){ window.deferredPrompt.prompt(); window.deferredPrompt.userChoice.then(()=>{ document.getElementById('pwaInstallBtn').innerHTML='✅ INSTALLED'; document.getElementById('pwaInstallBtn').classList.add('installed'); window.deferredPrompt=null; }); } }
+        if(window.matchMedia('(display-mode: standalone)').matches) document.getElementById('pwaInstallBtn') && (document.getElementById('pwaInstallBtn').innerHTML='✅ INSTALLED', document.getElementById('pwaInstallBtn').classList.add('installed'));
         
-        document.addEventListener('keydown', e=>{ 
-            if(e.key==='Escape') closeModal(); 
-            if(!document.querySelector('.modal.active')){ 
-                if(e.key==='ArrowRight') nextSection(); 
-                else if(e.key==='ArrowLeft') prevSection(); 
-            } 
-        });
-        
-        window.addEventListener('beforeinstallprompt', e=>{ e.preventDefault(); deferredPrompt=e; const btn=document.getElementById('pwaInstallBtn'); if(btn) btn.style.display='inline-block'; });
-        function installPWA() { if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt.userChoice.then(r=>{ if(r.outcome==='accepted'){ const btn=document.getElementById('pwaInstallBtn'); if(btn){ btn.innerHTML='INSTALLED'; btn.classList.add('installed'); } } deferredPrompt=null; }); } }
-        if(window.matchMedia('(display-mode: standalone)').matches){ const btn=document.getElementById('pwaInstallBtn'); if(btn){ btn.style.display='inline-block'; btn.innerHTML='INSTALLED'; btn.classList.add('installed'); } }
-        
-        generateAllSections();
-        initializeSectionMenu();
-        updateSectionDisplay();
-        document.addEventListener('click', function(e) {
-            const menu = document.getElementById('sectionMenuMobile');
-            const toggle = document.getElementById('sectionMenuToggle');
-            if(menu && !menu.contains(e.target) && toggle && !toggle.contains(e.target)) closeSectionMenu();
-        });
+        generateAllSections(); initMenu(); buildDesktopTabs(); updateSectionDisplay();
+        document.addEventListener('click',(e)=>{ const menu=document.getElementById('sectionMenuMobile'); const toggle=document.getElementById('sectionMenuToggle'); if(menu && !menu.contains(e.target) && toggle && !toggle.contains(e.target)){ document.getElementById('sectionMenuItems').classList.remove('expanded'); document.getElementById('sectionMenuToggle').classList.remove('expanded'); } });
+        document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); if(!document.querySelector('.modal.active')){ if(e.key==='ArrowRight') nextSection(); if(e.key==='ArrowLeft') prevSection(); } });
     </script>
 </body>
 </html>
